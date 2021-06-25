@@ -1,6 +1,6 @@
 # webPractice
 
-<BlockQuote style="background-color:orange"><h3>.NET framework</h3><br />
+<BlockQuote><h3>.NET framework</h3><br />
   <BlockQuote><h4>HW1</h4>
     <BlockQuote><h6>費氏數列運算與星座查詢(無資料庫或API)</h6></BlockQuote>
   </BlockQuote><br />
