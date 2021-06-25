@@ -1,0 +1,56 @@
+﻿@model A7407630_HW2.Models.QueryExpenseModel
+
+@{
+    ViewBag.Title = "查詢酒類紀錄";
+}
+
+@* 從Model中取出酒的種類陣列，據以建立酒的種類下拉式選項清單物件 *@
+@{
+    List<SelectListItem> searchTypeListItems = new List<SelectListItem>();
+    foreach (string k in Model.searchTypeList)
+    {
+        searchTypeListItems.Add(new SelectListItem { Text = k });
+    }
+}
+
+<div align="center" style="font-family:標楷體">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">查詢酒類紀錄操作介面</b>
+    <br />
+    <br />
+
+    @*建立查詢酒類紀錄表單*@
+    @using (Html.BeginForm("QueryExpenseIndex", "Drink", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.searchType, new { @class = "label label-primary label-lg" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.searchType, searchTypeListItems, "選擇酒的種類", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.searchType, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" name="btnSend" value="查詢消費紀錄" class="btn btn-success">
+        <br />
+        if (TempData["Query"] == null)
+        {
+            @Html.TextArea("Result", null, 10, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+        }
+        else
+        {
+            @Html.TextArea("Result", TempData["Query"].ToString(), 10, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+        }
+        <br />
+        @Html.ActionLink("儲存消費紀錄頁面", "SaveExpenseIndex", "Drink", null, new { @class = "btn btn-success btn-sm" }) <span> &nbsp;</span>
+        @Html.ActionLink("刪除消費紀錄頁面", "DeleteExpenseIndex", "Drink", null, new { @class = "btn btn-success btn-sm" }) <span> &nbsp;</span>
+        @Html.ActionLink("管理消費種類頁面", "ManageExpenseTypeIndex", "Drink", null, new { @class = "btn btn-success btn-sm" })
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

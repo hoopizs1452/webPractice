@@ -1,0 +1,18 @@
+﻿@model WEB.Models.ManageExpenseTypeModel
+
+@*建立新增消費種類表單*@
+@using (Html.BeginForm("AddNewExpenseType", "Drink", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.expenseType, new { @class = "label label-primary" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.expenseType)
+                @Html.ValidationMessageFor(m => m.expenseType, "", new { @class = "text-danger" })
+                <input type="submit" name="btnSend" value="新增" class="btn btn-success">
+            </td>
+        </tr>
+    </table>
+}

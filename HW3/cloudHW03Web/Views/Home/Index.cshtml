@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "網站首頁";
+}
+
+<style>
+    .button {
+        border: none;
+        background-color: transparent;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: transparent;
+        color: white;
+        border: 2px solid #4CAF50;
+    }
+
+    .button1:hover {
+        background-color: #4CAF50;
+        color: blue;
+    }
+</style>
+
+<div align="center">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">網站首頁</b>
+    <br /> <br />
+           <h3> @* 將兩個按鈕的樣式改為沒做動作時邊框為綠色背景為透明字體為白色，觸發按鈕時背景為綠色字體為藍色，並且垂直置中對其 *@
+               @Html.ActionLink("星座查詢服務(GET)", "ConstellationGet", "Constellation", null, new { @class = "button button1", style = "font-family:標楷體;" })<br /><br />
+               @Html.ActionLink("費氏數列計算服務(POST)", "FibonacciPost", "Fibonacci", null, new { @class = "button button1", style = "font-family:標楷體;" })
+           </h3>
+</div>

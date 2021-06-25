@@ -1,0 +1,38 @@
+﻿@model CloudComputeHW1.ViewModels.MathViewModel
+@{
+    ViewBag.Title = "數學費氏數列運算";
+}
+
+    <div align="center">
+        <br />
+        <b class="label label-danger" style="font-size:large">數學費氏數列運算</b>
+        <br />
+        @*建立數學費氏數列運算表單*@
+        @using (Html.BeginForm("MathCompute", "Math"))
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Num1, new { @class = "label label-warning label-sm" }) <!-- 數字的輸入欄 -->
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Num1)
+                        @Html.ValidationMessageFor(m => m.Num1, "", new { @class = "text-danger" }) <!-- 結果的顯示欄 -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Result, new { @class = "label label-warning label-sm" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Result)
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="btnCompute" value="計算" class="btn btn-success" />
+        }
+    </div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

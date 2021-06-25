@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 酒櫃管理系統</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar {
+            background-color: orange !important;
+        }
+
+            .navbar .navbar-brand {
+                color: brown !important;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .navbar li a {
+                color: #f1ff00 !important;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #f4511e !important;
+            background-color: #fff !important;
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #fff !important;
+        }
+
+        .textarea {
+            width: auto;
+        }
+
+        .pic {
+            background-image: url('https://i.imgur.com/EJ5j2N7.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, .3);
+            background-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body style="font-family: 標楷體" class="pic">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Mvc入口網站-雲端酒櫃管理", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("首頁", "Index", "Home")</li>
+                    <li>@Html.ActionLink("儲存酒櫃紀錄頁面", "SaveExpenseIndex", "Drink")</li>
+                    <li>@Html.ActionLink("查詢酒櫃紀錄頁面", "QueryExpense", "Drink")</li>
+                    <li>@Html.ActionLink("刪除酒櫃紀錄頁面", "DeleteExpense", "Drink")</li>
+                    <li>@Html.ActionLink("管理酒櫃種類頁面", "ManageExpenseTypeIndex", "Drink")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "網站首頁";
+}
+
+<div align="center">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">網站首頁</b>
+    <br />
+    <h3>
+        @Html.ActionLink("數學費氏數列運算", "MathCompute", "Math", null, new { @class = "btn btn-success btn-md" }) <!-- 費氏數列的按鈕連結 -->
+        @Html.ActionLink("星座查詢", "Constellation", "Constellation", null, new { @class = "btn btn-success btn-md" }) <!-- 星座查詢的按鈕連結 -->
+    </h3>
+</div>

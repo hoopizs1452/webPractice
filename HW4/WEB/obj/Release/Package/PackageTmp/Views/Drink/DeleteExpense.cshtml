@@ -1,0 +1,89 @@
+﻿@model WEB.Models.DeleteExpenseModel
+
+@{
+    ViewBag.Title = "刪除酒櫃紀錄頁面";
+}
+
+<style>
+    .button {
+        border: none;
+        background-color: transparent;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: transparent;
+        color: white;
+        border: 2px solid #4CAF50;
+    }
+
+    .button1:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<div align="center" style="font-family:標楷體">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">刪除酒櫃紀錄操作介面</b>
+    <br />
+    <br />
+
+    @*建立儲存酒櫃紀錄表單*@
+    @using (Html.BeginForm("DeleteExpense", "Drink"))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.delType, new { @class = "label label-primary" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.delType)
+                    @Html.ValidationMessageFor(m => m.delType, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.year, new { @class = "label label-primary" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.year)
+                    @Html.ValidationMessageFor(m => m.year, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+        </table>
+        <input type="submit" name="btnSend" value="刪除消費資料" class="btn btn-success">
+        <br />
+        if (TempData["Delete"] == null)
+        {
+            @Html.TextArea("Result", null, 10, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+        }
+        else
+        {
+            @Html.TextArea("Result", TempData["Delete"].ToString(), 10, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+        }
+        <br />
+
+        @Html.ActionLink("儲存酒櫃紀錄頁面", "SaveExpenseIndex", "Drink", null, new { @class = "button button1" }) <span>&nbsp;</span>
+        @Html.ActionLink("查詢酒櫃紀錄頁面", "QueryExpense", "Drink", null, new { @class = "button button1" }) <span>&nbsp;</span>
+        @Html.ActionLink("管理酒櫃種類頁面", "ManageExpenseTypeIndex", "Drink", null, new { @class = "button button1" })
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+

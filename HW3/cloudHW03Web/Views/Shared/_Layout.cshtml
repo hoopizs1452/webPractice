@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar {
+            background-color: transparent !important; /*將上方的選擇bar背景改成透明*/
+        }
+
+            .navbar .navbar-brand {
+                color: brown !important;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .navbar li a {
+                color: #f1ff00 !important;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #f4511e !important;
+            background-color: #fff !important;
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #fff !important;
+        }
+        .textarea {
+            width: auto;
+        }
+
+        .pic {
+            background-image: url('https://i.imgur.com/eakzrx4.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, .3);
+            background-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body style="font-family:標楷體" class="pic"> @*將網頁背景的圖片改為流星的gif動圖*@
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> @*將Home(星座與費氏數列服務WebApis之Mvc操作網站)的顏色改為棕色*@
+                @Html.ActionLink("星座與費氏數列服務WebApis之Mvc操作網站", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"> @*將下列三個字的顏色改為黃色*@
+                    <li>@Html.ActionLink("首頁", "Index", "Home")</li>
+                    <li>@Html.ActionLink("星座查詢服務(GET)", "ConstellationGet", "Constellation")</li>
+                    <li>@Html.ActionLink("費氏數列計算服務(POST)", "FibonacciPost", "Fibonacci")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

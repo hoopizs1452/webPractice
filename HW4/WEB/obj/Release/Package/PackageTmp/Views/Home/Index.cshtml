@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "網站首頁";
+}
+
+<style>
+    .button {
+        border: none;
+        background-color: transparent;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: transparent;
+        color: white;
+        border: 2px solid #4CAF50;
+    }
+
+    .button1:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<div align="center" style="font-family: 標楷體">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">網站首頁</b>
+    <br /> <br />
+    <h3 style="text-align:center">
+        @Html.ActionLink("儲存酒櫃紀錄頁面", "SaveExpenseIndex", "Drink", null, new { @class = "button button1" })       @*<span>&nbsp;</span>*@<br /><br />
+        @Html.ActionLink("查詢酒櫃紀錄頁面", "QueryExpense", "Drink", null, new { @class = "button button1" })      @*<span>&nbsp;</span>*@<br /><br />
+        @Html.ActionLink("刪除酒櫃紀錄頁面", "DeleteExpense", "Drink", null, new { @class = "button button1" })     @*<span>&nbsp;</span>*@<br /><br />
+        @Html.ActionLink("管理酒櫃種類頁面", "ManageExpenseTypeIndex", "Drink", null, new { @class = "button button1" })
+    </h3>
+</div>

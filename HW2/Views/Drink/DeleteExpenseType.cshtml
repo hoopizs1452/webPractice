@@ -1,0 +1,18 @@
+﻿@model A7407630_HW2.Models.ManageExpenseTypeModel
+
+@*建立刪除酒的種類表單*@
+@using (Html.BeginForm("DeleteExpenseType", "Drink"))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.manageTypeNumber, new { @class = "label label-primary" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.manageTypeNumber)
+                @Html.ValidationMessageFor(m => m.manageTypeNumber, "", new { @class = "text-danger" })
+                <input type="submit" name="btnSend" value="刪除" class="btn btn-success">
+            </td>
+        </tr>
+    </table>
+}

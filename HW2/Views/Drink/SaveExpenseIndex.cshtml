@@ -1,0 +1,65 @@
+﻿@model A7407630_HW2.Models.SaveExpenseModel
+
+@{
+    ViewBag.Title = "儲存酒類紀錄";
+}
+
+@* 從Model中取出酒類陣列，據以建立酒類下拉式選項清單物件 *@
+@{
+    List<SelectListItem> expenseTypeListItems = new List<SelectListItem>();
+    foreach (string k in Model.expenseTypeList)
+    {
+        expenseTypeListItems.Add(new SelectListItem { Text = k });
+    }
+}
+
+<div align="center" style="font-family:標楷體">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">儲存酒類紀錄操作介面</b>
+    <br />
+    <br />
+
+    @*建立儲存酒類表單*@
+    @using (Html.BeginForm("SaveExpenseIndex", "Drink", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.expenseType, new { @class = "label label-primary label-lg" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.expenseType, expenseTypeListItems, "選擇酒的種類", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.expenseType, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.year, new { @class = "label label-primary label-lg" })
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.year)
+                    @Html.ValidationMessageFor(m => m.year, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" name="btnSaveExpense" value="儲存" class="btn btn-success">
+        <br />
+        if (TempData["Save"] == null)
+        {
+            @Html.TextArea("Result", null, 8, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+        }
+        else
+        {
+            @Html.TextArea("Result", TempData["Save"].ToString(), 8, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+        }
+        <br />
+        @Html.ActionLink("查詢酒類紀錄", "QueryExpenseIndex", "Drink", null, new { @class = "btn btn-success btn-sm" }) <span> &nbsp;</span>
+        @Html.ActionLink("刪除酒類紀錄", "DeleteExpenseIndex", "Drink", null, new { @class = "btn btn-success btn-sm" }) <span> &nbsp;</span>
+        @Html.ActionLink("管理酒的種類", "ManageExpenseTypeIndex", "Drink", null, new { @class = "btn btn-success btn-sm" })
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

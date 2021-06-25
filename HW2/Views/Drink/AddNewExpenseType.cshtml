@@ -1,0 +1,18 @@
+﻿@model A7407630_HW2.Models.ManageExpenseTypeModel
+
+@*建立新增酒的種類表單*@
+@using (Html.BeginForm("AddNewExpenseType", "Drink"))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.manageType, new { @class = "label label-primary label-lg" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.manageType)
+                @Html.ValidationMessageFor(m => m.manageType, "", new { @class = "text-danger" })
+                <input type="submit" name="btnSend" value="新增" class="btn btn-success">
+            </td>
+        </tr>
+    </table>
+}

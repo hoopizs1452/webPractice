@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "管理酒櫃種類頁面";
+}
+
+<style>
+    .button {
+        border: none;
+        background-color: transparent;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: transparent;
+        color: white;
+        border: 2px solid #4CAF50;
+    }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+<div align="center" style="font-family:標楷體">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">管理酒櫃種類操作介面</b>
+    <br />
+    <br />
+    @*載入新增消費種類頁面*@
+    <div id="AddNewExpenseType">
+        @Html.Action("AddNewExpenseType")
+    </div>
+
+    @*載入刪除消費種類頁面*@
+    <div id="DeleteExpenseType">
+        @Html.Action("DeleteExpenseType")
+    </div>
+
+    @if (TempData["Manage"] == null)
+    {
+        @Html.TextArea("Result", null, 16, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+    }
+    else
+    {
+        @Html.TextArea("Result", TempData["Manage"].ToString(), 16, 100, htmlAttributes: new { style = "width: 50%; max-width: 100%;" })
+    }
+
+    <br />
+
+    @Html.ActionLink("儲存酒櫃紀錄頁面", "SaveExpenseIndex", "Drink", null, new { @class = "button button1" })  <span>&nbsp;</span>
+    @Html.ActionLink("查詢酒櫃紀錄頁面", "QueryExpense", "Drink", null, new { @class = "button button1" }) <span>&nbsp;</span>
+    @Html.ActionLink("刪除酒櫃紀錄頁面", "DeleteExpense", "Drink", null, new { @class = "button button1" })
+</div>
+
+
+
+
+
+

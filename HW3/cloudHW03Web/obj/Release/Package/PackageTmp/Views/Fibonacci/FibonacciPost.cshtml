@@ -1,0 +1,44 @@
+﻿
+@model cloudHW03Web.Models.FibonacciModels
+
+@{
+    ViewBag.Title = "費氏數列計算服務";
+}
+
+
+
+<div align="center">
+    <br />
+    <b class="label label-danger" style="font-size:x-large">呼叫費氏數列計算服務 by POST</b>
+    <br /> <br />
+    @*建立費氏數列計算服務表單*@
+    @using (Html.BeginForm("FibonacciPost", "Fibonacci"))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Number, new { @class = "label label-warning" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Number)
+                    @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Result, new { @class = "label label-warning" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Result)
+                </td>
+            </tr>
+        </table>
+        <input type="submit" name="btnCompute" value="計算" class="btn btn-success">
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

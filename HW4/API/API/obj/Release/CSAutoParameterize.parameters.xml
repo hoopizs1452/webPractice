@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="HW4DB-Web.config Connection String" description="HW4DB 應用程式在 web.config 中用來存取資料庫的連接字串。" defaultValue="Data Source=140.137.41.136,1381\SQLEXPRESS; &#xD;&#xA;                            Initial Catalog=A7407630; User ID=A7407630; Password=$A740!7630s" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="F:\\vs2019source\\repos\\API\\API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HW4DB']/@connectionString" />
+  </parameter>
+</parameters>
